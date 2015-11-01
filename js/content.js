@@ -5,7 +5,9 @@ var runSentimentSearch = function(){
     
     var xmlhttp = new XMLHttpRequest();
     var query = document.getElementById("lst-ib").value;
-    var url = "https://www.googleapis.com/customsearch/v1?key=AIzaSyCt44Xj-RFsiVL-MeR5g5U4Chrsbb7DvfA&cx=002494473691101639048:kfwgrseieb0&q=" + query;
+		var googlekey = AIzaSyD_14Ih1GGAUYqOiX-_dlHZfCli4MYLBVk;
+		var havenkey = f8003a4c-8955-4b29-b21b-ae353c626758;
+    var url = "https://www.googleapis.com/customsearch/v1?key=" + googlekey + "&cx=002494473691101639048:kfwgrseieb0&q=" + query;
     xmlhttp.onreadystatechange = function() { // async
 	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 	    var myArr = JSON.parse(xmlhttp.responseText);
@@ -29,7 +31,7 @@ var runSentimentSearch = function(){
 
     function sentiment(data) {
 	var xmlhttp = new XMLHttpRequest();
-	var url = "https://api.havenondemand.com/1/api/sync/analyzesentiment/v1?apikey=f8003a4c-8955-4b29-b21b-ae353c626758&url=" + data;
+	var url = "https://api.havenondemand.com/1/api/sync/analyzesentiment/v1?apikey=" + havenkey + "&url=" + data;
 	xmlhttp.onreadystatechange = function() { // async
 	    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 		loop--;
