@@ -4,7 +4,7 @@
 	"name": "I'm Feeling Happy!",
 	"description": "Never be depressed with this extension.",
 	"version": "1.0",
-	"icons": { "64" : "images/icon.png" },
+	"icons": { "48" : "images/icon48.png", "128" : "images/icon128.png" },
 	"homepage_url": "https://github.com/ServePeak/bostonhacks-f15",
 
 	"content_scripts": [
