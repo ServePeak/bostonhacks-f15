@@ -1,9 +1,7 @@
-
-
 var runSentimentSearch = function(){
     var sentimental = -1;
 		var sentiUrl = "http://google.com/";
-		var loop = 0;
+		var loop;
 
 		var xmlhttp = new XMLHttpRequest();
 		var query = document.getElementById("lst-ib").value;
@@ -20,6 +18,7 @@ var runSentimentSearch = function(){
 		//parseSearch = function(arr,callback){
 		function parseSearch(arr) {
 			var urls = [];
+			loop = arr["items"].length;
 			for(i = 0; i < arr["items"].length; i++) {
 				urls.push(arr["items"][i].link);
 			}
@@ -33,17 +32,18 @@ var runSentimentSearch = function(){
 			var url = "https://api.havenondemand.com/1/api/sync/analyzesentiment/v1?apikey=f8003a4c-8955-4b29-b21b-ae353c626758&url=" + data;
 			xmlhttp.onreadystatechange = function() { // async
 				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-					loop++;
+					loop--;
 					var myArr = JSON.parse(xmlhttp.responseText);
-					console.log(myArr["aggregate"].score);
+					//console.log(myArr["aggregate"].score);
+					//console.log(loop);
 					if( myArr["aggregate"].score > sentimental ) {
 						sentimental = myArr["aggregate"].score;
 						sentiUrl = data;
 					}
-				} else if (xmlhttp.readyState == 4 && (!xmlhttp.status == 200) ) {
-					loop++;
+				} else if (xmlhttp.readyState == 4 ) {
+					loop--;
 				}
-				if( loop == 10 ) {
+				if( loop == 0 ) {
 					window.location.replace(sentiUrl);
 				}
 			}
@@ -78,4 +78,4 @@ var outerSpan = document.createElement("span");
 outerSpan.setAttribute("class", "ds");
 innerSpan.appendChild(sBtn);
 outerSpan.appendChild(innerSpan);
-document.getElementById("lst-ib").addEventListener("keyup",addButton);
+setTimeout(document.getElementById("lst-ib").addEventListener("keyup",addButton),3000);
