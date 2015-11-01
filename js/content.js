@@ -20,14 +20,20 @@ var runSentimentSearch = function(){
     //parseSearch = function(arr,callback){
     function parseSearch(arr) {
 	var urls = [];
-	loop = arr["items"].length;
-	for(i = 0; i < arr["items"].length; i++) {
-	    urls.push(arr["items"][i].link);
-	}
-	for(i = 0; i < urls.length; i++ ) { // Runs 10x
-	    sentiment(urls[i]);
+	console.log
+	if( arr["items"] === undefined ) {
+		window.location.replace("https://www.google.com/#q=" + query);
+	} else {
+		loop = arr["items"].length;
+		for(i = 0; i < arr["items"].length; i++) {
+				urls.push(arr["items"][i].link);
+		}
+		for(i = 0; i < urls.length; i++ ) { // Runs 10x
+				sentiment(urls[i]);
+		}
 	}
     };
+		
 
     function sentiment(data) {
 	var xmlhttp = new XMLHttpRequest();
