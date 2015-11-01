@@ -5,8 +5,8 @@ var runSentimentSearch = function(){
     
     var xmlhttp = new XMLHttpRequest();
     var query = document.getElementById("lst-ib").value; // Search bar for google
-    var googlekey = "AIzaSyD_14Ih1GGAUYqOiX-_dlHZfCli4MYLBVk"; // Your Google API key
-    var havenkey = "f8003a4c-8955-4b29-b21b-ae353c626758"; // Your HavenOnDemand API key
+    var googlekey = ""; // Your Google API key
+    var havenkey = ""; // Your HavenOnDemand API key
     var url = "https://www.googleapis.com/customsearch/v1?key=" + googlekey + "&cx=002494473691101639048:kfwgrseieb0&q=" + query;
     xmlhttp.onreadystatechange = function() { // Retrieving JSON data
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
